@@ -12,13 +12,13 @@ return (
 	<Stack.Navigator
 		screenOptions={{
 		headerStyle: {
-			backgroundColor: 'green',
+			backgroundColor: '#fc03a1',
 		},
 		headerTintColor: '#fff',
 		}}>
 		<Stack.Screen name="Home" component={HomeScreen} />
-		<Stack.Screen name="Anime" component={AnimeScreen} />
-		<Stack.Screen name="Selected" component={SelectedScreen} />
+		<Stack.Screen name="Search" component={AnimeScreen} />
+		<Stack.Screen name="Anime" component={SelectedScreen} />
 	</Stack.Navigator>
 	</NavigationContainer>
 );

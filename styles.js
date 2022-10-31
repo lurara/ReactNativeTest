@@ -1,21 +1,22 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: 'purple',
-        marginTop: 50,
-    },
     container: {
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
+    subcontainer: {
+        maxWidth: '80%',
+        marginBottom: 25,
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     input: {
         height: 40,
-        margin: 12,
+        margin: 15,
         borderWidth: 1,
         padding: 10,
     },
@@ -30,11 +31,37 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     title: {
+        fontSize: 50,
+        fontWeight: 'bold',
+        color: 'black',
+        marginTop: 60,
+    },
+    header: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: 'purple',
+        color: 'black',
         marginTop: 50,
     },
-    });
+    score: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        color: '#fc0373',
+    },
+    rec: {
+        fontSize: 100,
+        fontWeight: 'bold',
+        color: '#black',
+        marginTop: 60,
+    },
+    buttonsView: {
+        marginBottom: 30,
+        marginTop: 30,
+        flexDirection: 'row',
+    },
+    backButton: {
+        paddingRight: 10,
+    }
+
+});
     
 export default styles;

@@ -10,34 +10,33 @@ const [animeTitle, setAnimeTitle] = useState('');
 const navigation = useNavigation();
 
 const goAnimeScreen = () => {
-	navigation.navigate('Anime', {
+	navigation.navigate('Search', {
 	animeTitle, // message
 	});
 };
 
 return (
     <View style={styles.container}>
-        <Text style={styles.title}>ANIMU OTAKU WEEABOO YAY</Text>
+        <Text style={styles.title}>Should You Watch?</Text>
+        <View style={styles.subcontainer}>
+          <Text style={styles.header}> 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus vel scelerisque eros. 
+            Vestibulum sollicitudin sit amet nulla eu pharetra. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus vel scelerisque eros. 
+            Vestibulum sollicitudin sit amet nulla eu pharetra.
+          </Text>
+        </View>
         <TextInput
         placeholder='Input Desired Anime'
         style={styles.input}
         value={animeTitle}
         onChangeText={(text) => setAnimeTitle(text)} /> 
-        <Button title="Submit" onPress={goAnimeScreen}/>
+        <Button title="Search" onPress={goAnimeScreen}/>
         <StatusBar style="auto" />
     </View>
 );
 };
-
-	{/* <Text style={styles.title}>ANIMU OTAKU WEEABOO YAY</Text>
-	<TextInput
-		placeholder="Enter your message here"
-		value={message}
-		onChangeText={(text) => setMessage(text)}
-		style={styles.input}
-	/>
-	<Button title="Submit"
-		onPress={goAnimeScreen} color="green" />
-	</View> */}
 
 export default HomeScreen;

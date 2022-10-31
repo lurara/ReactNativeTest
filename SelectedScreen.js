@@ -2,7 +2,7 @@ import { Text, View, Image } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
-import decide from './ShouldYouWatch';
+import { decide, randomRecExpression } from './ShouldYouWatch';
 
 
 const SelectedScreen = () => {
@@ -10,7 +10,7 @@ const SelectedScreen = () => {
 	let unparsedData, DATA;
     const route = useRoute(); 
 	const [animeStats, setAnimeStats] = useState({});
-	const [user_recommendation, setRec] = useState('no');
+	const [user_recommendation, setRec] = useState("");
 
 	const getMetrics = async (path) => {
 		try {
@@ -25,7 +25,7 @@ const SelectedScreen = () => {
 					recommend = false;
 
 					for (let i = 0; i < json.data.scores.length; i++) {
-						if(unparsedData.scores[i].score < 6)
+						if(unparsedData.scores[i].score < 7)
 							downscore += (unparsedData.scores[i].votes);
 						else upperscore += (unparsedData.scores[i].votes);
 
@@ -44,7 +44,7 @@ const SelectedScreen = () => {
 						plan_to_watch: unparsedData.plan_to_watch,
 						dropped: unparsedData.dropped,
 						total: unparsedData.total,
-						score: score,
+						score: score.toFixed(2),
 						recommend: recommend,						
 					};
 
@@ -69,22 +69,23 @@ const SelectedScreen = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log(animeStats);
-		if(animeStats != {})
-			setRec(decide(animeStats));
+		if(animeStats != {}) {
+			let expr = randomRecExpression(decide(animeStats));
+			setRec(expr);
+		}
+
 	}, [animeStats]);
 
     return (
         <View style={styles.container}>
-
-		<Text >{user_recommendation}</Text>
-		<Text >{animeStats.score}</Text>
-		<Text >Watching: {animeStats.watching}</Text>
-		<Text >completed: {animeStats.completed}</Text>
-		<Text >Dropped: {animeStats.dropped}</Text>
-		<Text >On_Hold: {animeStats.on_hold}</Text>
-		<Text >Total: {animeStats.total}</Text>
-        <Text style={styles.title}>{route.params.title}</Text>
+			<Text style={styles.rec}>{user_recommendation}</Text>
+			<Text style={styles.score}>Score: {animeStats.score}</Text>
+			<Text >Completed: {animeStats.completed}</Text>
+			<Text >Watching: {animeStats.watching}</Text>
+			<Text >Dropped: {animeStats.dropped}</Text>
+			<Text >On Hold: {animeStats.on_hold}</Text>
+			<Text >Total: {animeStats.total}</Text>
+			<Text style={styles.title}>{route.params.title}</Text>
         </View>
     );
 };
