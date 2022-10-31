@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import decide from './ShouldYouWatch';
 
 
 const SelectedScreen = () => {
 	//userAction();
 	let unparsedData, DATA;
-    const route = useRoute();
+    const route = useRoute(); 
 	const [animeStats, setAnimeStats] = useState({});
+	const [user_recommendation, setRec] = useState(0);
 
 	const getMetrics = async (path) => {
 		try {
@@ -16,7 +18,23 @@ const SelectedScreen = () => {
 				response.json()).then((json) => {
 
 					unparsedData = json.data;
-					console.log(unparsedData);
+					
+					let score, recommend, upperscore, downscore;
+					score = upperscore = downscore = 0;
+					recommend = false;
+
+					for (let i = 0; i < json.data.scores.length; i++) {
+						if(unparsedData.scores[i].score < 7)
+							upperscore += (unparsedData.scores[i].votes);
+						else downscore += (unparsedData.scores[i].votes);
+
+						score += (unparsedData.scores[i].score)*unparsedData.scores[i].percentage;
+					}
+
+					score = score/100;
+					
+					if (upperscore > downscore) 
+						recommend = true;
 
 					DATA = {
 						watching: unparsedData.watching,
@@ -24,11 +42,12 @@ const SelectedScreen = () => {
 						on_hold: unparsedData.on_hold,
 						plan_to_watch: unparsedData.plan_to_watch,
 						dropped: unparsedData.dropped,
-						total: unparsedData.total
+						total: unparsedData.total,
+						score: score,
+						recommend: recommend,						
 					};
 
 					setAnimeStats(DATA);
-					console.log(animeStats);
 				})
 				.then(success => {
 					console.log("Fetched anime stats");
@@ -48,12 +67,21 @@ const SelectedScreen = () => {
 		getMetrics(path);
 	}, []);
 
+	useEffect(() => {
+		console.log(animeStats);
+		if(animeStats != {})
+			setRec(decide(animeStats));
+	}, [animeStats]);
 
     return (
         <View style={styles.container}>
-		<Text >{unparsedData}
-		</Text>
-		{/*  load dinamically the metrics here */}
+
+		<Text >{user_recommendation}</Text>
+		<Text >{animeStats.score}</Text>
+		<Text >Stats: {animeStats.watching}</Text>
+		<Text >{animeStats.completed}</Text>
+		<Text >{animeStats.dropped}</Text>
+		<Text >{animeStats.on_hold}</Text>
         <Text style={styles.title}>{route.params.title}</Text>
         </View>
     );
