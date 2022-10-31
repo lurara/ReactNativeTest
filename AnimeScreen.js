@@ -88,7 +88,8 @@ const AnimeScreen = () => {
 	const goNextPage = () => {
 		let cur_page = current_page+1;
 		let path = 'https://api.jikan.moe/v4/anime?q=' + route.params.animeTitle 
-			+ '?page=' + (cur_page);
+			+ '&sfw=true'
+			+ '&page=' + (cur_page);
 
 		setPage(cur_page);
 
@@ -101,7 +102,8 @@ const AnimeScreen = () => {
 		let cur_page = current_page-1;
 		console.log('boo');
 		let path = 'https://api.jikan.moe/v4/anime?q=' + route.params.animeTitle 
-			+ '?page=' + cur_page;
+			+ '&sfw=true'
+			+ '&page=' + cur_page;
 		
 		setPage(cur_page);
 
@@ -118,9 +120,16 @@ const AnimeScreen = () => {
 			numColumns={3}
 			columnWrapperStyle={{justifyContent: 'space-between'}}
 			renderItem={({ item }) => 
-				<TouchableOpacity onPress={() => setAnime(item.id)}>
-					<Image style={styles.image} source={{uri: item.image}}/>
-					<Text style={styles.item}>{item.title}</Text>
+				<TouchableOpacity style={styles.listItem} onPress={() => {
+					if(item.id == selectedAnime) 
+						goSelectedScreen();
+					else 
+						setAnime(item.id);
+					}}>
+					<View style={styles.itemView}>
+						<Image style={styles.image} source={{uri: item.image}}/>
+						<Text style={styles.itemText}> {item.title}</Text>
+					</View>
 				</TouchableOpacity>
 			}
 			keyExtractor={item => item.id}/>

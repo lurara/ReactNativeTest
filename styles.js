@@ -23,12 +23,25 @@ const styles = StyleSheet.create({
     image: {
         width: 200,
         height: 200,
+        // border: 100,
+        alignItems: 'center',   
     },  
-    item: {
+    itemView: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    itemText: {
+        fontSize: 15,
+        marginTop: 10,
+        color: 'black',
+        maxWidth: '80%',
+        textAlign: 'center',
+    },
+    listItem: {
+        alignContent: 'center',
         padding: 20,
         fontSize: 15,
         marginTop: 5,
-        color: 'black',
     },
     title: {
         fontSize: 50,
