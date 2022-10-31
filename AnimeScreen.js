@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { FlatList, TouchableOpacity } from 'react-native-web';
+import styles from './styles'
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -80,7 +81,7 @@ const AnimeScreen = () => {
 
 	return (
         <View style={styles.container}>
-        <Text style={styles.title}>{route.params.animeTitle}</Text>
+        <Text style={styles.title}>Search: {route.params.animeTitle}</Text>
 			<FlatList data ={animeList} 
 			renderItem={({ item }) => 
 				<TouchableOpacity onPress={() => setAnime(item.id)}>
@@ -94,28 +95,3 @@ const AnimeScreen = () => {
 };
 
 export default AnimeScreen;
-
-const styles = StyleSheet.create({
-container: {
-	flex: 1,
-	backgroundColor: '#fff',
-	alignItems: 'center',
-	justifyContent: 'center',
-},
-item: {
-	padding: 20,
-	fontSize: 15,
-	marginTop: 5,
-	color: 'black',
-},
-image: {
-	width: 200,
-	height: 200,
-},  
-title: {
-	fontSize: 25,
-	fontWeight: 'bold',
-	color: 'purple',
-	marginTop: 50,
-},
-});

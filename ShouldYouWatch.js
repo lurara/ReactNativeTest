@@ -6,14 +6,14 @@
 
 export default function decide(anime) {
     const bad_rep = anime.on_hold + anime.dropped;
-    
-    if(!anime.recommend)  {
-        if (bad_rep > (anime.total)*0.05) return -1;
+
+    if(anime.recommend == false)  {
+        if (bad_rep > (anime.total)*0.05) return 'no';
     }
     else {
-        if (bad_rep > (anime.total)*0.2) return -1;
-        else if (bad_rep > (anime.total)*0.1) return 0;
+        if (bad_rep > (anime.total)*0.5) return 'no';
+        else if (bad_rep > (anime.total)*0.3) return 'maybe';
     }
 
-    return 1;
+    return 'yes';
 }

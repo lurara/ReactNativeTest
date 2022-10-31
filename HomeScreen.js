@@ -1,7 +1,8 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles'
 
 const HomeScreen = () => {
 const [animeTitle, setAnimeTitle] = useState('');  
@@ -40,29 +41,3 @@ return (
 	</View> */}
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-container: {
-	flex: 1,
-	backgroundColor: '#fff',
-	alignItems: 'center',
-},
-title: {
-	fontSize: 40,
-	fontWeight: 'bold',
-	color: 'purple',
-	marginTop: 50,
-}  ,
-container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
