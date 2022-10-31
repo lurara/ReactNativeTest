@@ -5,19 +5,33 @@ import React, { useEffect, useState } from 'react';
 
 const SelectedScreen = () => {
 	//userAction();
-	let unparsedData;
+	let unparsedData, DATA;
     const route = useRoute();
-
+	const [animeStats, setAnimeStats] = useState({});
 
 	const getMetrics = async (path) => {
 		try {
 			const response = await 
 			fetch(path).then((response) => 
 				response.json()).then((json) => {
+
 					unparsedData = json.data;
 					console.log(unparsedData);
+
+					DATA = {
+						watching: unparsedData.watching,
+						completed: unparsedData.completed,
+						on_hold: unparsedData.on_hold,
+						plan_to_watch: unparsedData.plan_to_watch,
+						dropped: unparsedData.dropped,
+						total: unparsedData.total
+					};
+
+					setAnimeStats(DATA);
+					console.log(animeStats);
 				})
 				.then(success => {
+					console.log("Fetched anime stats");
 				})
 				.catch((error) => {
 					console.error(error);
@@ -67,7 +81,7 @@ image: {
 title: {
 	fontSize: 25,
 	fontWeight: 'bold',
-	color: 'purple',
+	color: 'blue',
 	marginTop: 50,
 },
 });
