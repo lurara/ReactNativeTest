@@ -14,7 +14,7 @@ Assim feito, pode-se rodar
 
 > npx expo start
 
-para abrir as opções de execução.
+para abrir as opções de execução. 
 
 ## Bugs
 

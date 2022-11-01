@@ -69,17 +69,19 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
     image: {
+        width: 200,
+        height: 200,
         alignItems: 'center',  
-    ... Platform.select({
-        'web': {
-            width: 200,
-            height: 200,
-            // border: 100,
-        },
-        default: {
-            width: 200,
-            height: 200,
-        }}),
+    // ... Platform.select({
+    //     'web': {
+    //         width: 200,
+    //         height: 200,
+    //         // border: 100,
+    //     },
+    //     default: {
+    //         width: 200,
+    //         height: 200,
+    //     }}),
         // border: 100, 
     },  
 

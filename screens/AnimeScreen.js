@@ -116,7 +116,7 @@ const AnimeScreen = () => {
 			<FlatList data ={animeList} 
 			key={platformNum}
 			numColumns={platformNum}
-			style={{flex:0}}
+			// style={{flex:0}}
 			renderItem={({ item }) => 
 				<TouchableOpacity style={styles.listItem} onPress={() => {
 					if(item.id == selectedAnime) 
