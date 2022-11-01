@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     subcontainer: {
-        maxWidth: '80%',
+        maxWidth: '70%',
         marginBottom: 25,
         textAlign: 'center',
         alignItems: 'center',
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     listItem: {
         alignContent: 'center',
         padding: 20,
-        fontSize: 15,
-        marginTop: 5,
+        // fontSize: 15,
+        // marginTop: 5,
     },
     title: {
         fontSize: 50,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         marginTop: 60,
     },
     header: {
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',
         color: 'black',
         marginTop: 50,

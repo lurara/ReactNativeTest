@@ -2,7 +2,7 @@ import { Text, View, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { FlatList, TouchableOpacity } from 'react-native-web';
-import styles from './styles'
+import styles from '../styles'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -59,7 +59,7 @@ const AnimeScreen = () => {
 
 	useEffect(() => {
 		let path = 'https://api.jikan.moe/v4/anime?q=' + route.params.animeTitle 
-			+ '?order_by=popularity?sort=desc';
+			+ '&order_by=popularity';
 		
 		getAnime(path);
 	}, []);
@@ -117,7 +117,7 @@ const AnimeScreen = () => {
         <View style={styles.container}>
 			<Text style={styles.title}>Search: {route.params.animeTitle}</Text>
 			<FlatList data ={animeList} 
-			numColumns={3}
+			numColumns={5}
 			columnWrapperStyle={{justifyContent: 'space-between'}}
 			renderItem={({ item }) => 
 				<TouchableOpacity style={styles.listItem} onPress={() => {

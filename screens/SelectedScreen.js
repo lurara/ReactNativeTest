@@ -1,8 +1,8 @@
 import { Text, View, Image } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import styles from './styles';
-import { decide, randomRecExpression } from './ShouldYouWatch';
+import styles from '../styles';
+import { decide, randomRecExpression } from '../ShouldYouWatch';
 
 
 const SelectedScreen = () => {

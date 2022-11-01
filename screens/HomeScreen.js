@@ -2,16 +2,15 @@ import { Button, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
-import styles from './styles'
+import styles from '../styles'
 
 const HomeScreen = () => {
 const [animeTitle, setAnimeTitle] = useState('');  
-//const [message, setMessage] = useState('');
 const navigation = useNavigation();
 
 const goAnimeScreen = () => {
 	navigation.navigate('Search', {
-	animeTitle, // message
+	animeTitle, 
 	});
 };
 
@@ -19,13 +18,11 @@ return (
     <View style={styles.container}>
         <Text style={styles.title}>Should You Watch?</Text>
         <View style={styles.subcontainer}>
-          <Text style={styles.header}> 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus vel scelerisque eros. 
-            Vestibulum sollicitudin sit amet nulla eu pharetra. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus vel scelerisque eros. 
-            Vestibulum sollicitudin sit amet nulla eu pharetra.
+          <Text style={styles.header}>
+            Este aplicativo faz requests à API Jikan a fim de determinar se
+            um anime vale a pena ser assistido ou não. Ele se baseia tanto
+            no score do anime quanto nas métricas da intenção das pessoas
+            que interagem com o MyAnimeList.
           </Text>
         </View>
         <TextInput
