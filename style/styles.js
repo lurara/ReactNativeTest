@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -20,13 +21,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
     },
-    image: {
-        width: 200,
-        height: 200,
-        // border: 100,
-        alignItems: 'center',   
-    },  
     itemView: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -40,8 +36,6 @@ const styles = StyleSheet.create({
     listItem: {
         alignContent: 'center',
         padding: 20,
-        // fontSize: 15,
-        // marginTop: 5,
     },
     title: {
         fontSize: 50,
@@ -74,6 +68,20 @@ const styles = StyleSheet.create({
     backButton: {
         paddingRight: 10,
     },
+    image: {
+        alignItems: 'center',  
+    ... Platform.select({
+        'web': {
+            width: 200,
+            height: 200,
+            // border: 100,
+        },
+        default: {
+            width: 200,
+            height: 200,
+        }}),
+        // border: 100, 
+    },  
 
 });
     

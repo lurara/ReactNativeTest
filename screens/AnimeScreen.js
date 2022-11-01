@@ -1,16 +1,10 @@
-import { Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, Image, FlatList, TouchableOpacity, Platform } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import styles from '../style/styles'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-const userAction = async () => {
-	const response = await fetch('https://api.jikan.moe/v4/anime/1/full');
-	const myJson = await response.json(); //extract JSON from the http response
-	console.log(myJson);
-};
-  
 const AnimeScreen = () => {
 	//userAction();
     const route = useRoute();
@@ -21,6 +15,7 @@ const AnimeScreen = () => {
 	const [hasB4Page, setHasB4Page] = useState(false);
 	const [animeList, setAnimeList] = useState([]);
 	const [selectedAnime, setAnime] = useState(-1);
+	const [platformNum, setPlatformNum] = useState(5);
 
 	const getAnime = async (path) => {
 		try {
@@ -57,6 +52,11 @@ const AnimeScreen = () => {
 	useEffect(() => {
 		let path = 'https://api.jikan.moe/v4/anime?q=' + route.params.animeTitle 
 			+ '&order_by=popularity';
+
+		if (Platform.OS != 'web') {
+			setPlatformNum(0);
+			console.log(Platform.OS);
+		}
 		
 		getAnime(path);
 	}, []);
@@ -114,8 +114,9 @@ const AnimeScreen = () => {
         <View style={styles.container}>
 			<Text style={styles.title}>Search: {route.params.animeTitle}</Text>
 			<FlatList data ={animeList} 
-			numColumns={5}
-			columnWrapperStyle={{justifyContent: 'space-between'}}
+			key={platformNum}
+			numColumns={platformNum}
+			style={{flex:0}}
 			renderItem={({ item }) => 
 				<TouchableOpacity style={styles.listItem} onPress={() => {
 					if(item.id == selectedAnime) 

@@ -24,19 +24,19 @@ export function randomRecExpression(likeliness) {
     switch (likeliness) {
         case -1:
             if (rand == 0) expr = 'Oh... No.';
-            else if (rand == 1) expr = 'Seriously? No.';
+            else if (rand == 1) expr = 'Srsly? No.';
             else expr = 'Nope.';
 
             break;
         case 0:
-            if (rand == 0) expr = 'Hmmm... Maybe.';
+            if (rand == 0) expr = 'Hmmm... Ok?';
             else if (rand == 1) expr = 'Maybe!'
             else expr =	'I guess?'
 
             break;
         default:
             if (rand == 0) expr = 'YES.'
-            else if (rand == 1) expr = 'Definitely.'
+            else if (rand == 1) expr = 'Sure!'
             else expr = 'Please do!';		
     }
 
