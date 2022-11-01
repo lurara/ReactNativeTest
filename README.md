@@ -4,10 +4,22 @@ Este aplicativo faz requests à API Jikan a fim de determinar se um anime vale a
 
 ## Execução
 
-É necessário
+Primeiramente, deve-se rodar
+
+> npm install
+
+a fim de se instalar as dependências do aplicativo.
+
+Assim feito, pode-se rodar
+
+> npx expo start
+
+para abrir as opções de execução.
 
 ## Bugs
 
-Notei que é necessário declarar no terminal 
+É necessário declarar no terminal 
+
 > export NODE_OPTIONS=--openssl-legacy-provider
-a fim de fazer o aplicativo funcionar.
+
+a fim de fazer o aplicativo funcionar no webbrowser.
