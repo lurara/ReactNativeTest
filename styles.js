@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     backButton: {
         paddingRight: 10,
-    }
+    },
 
 });
     

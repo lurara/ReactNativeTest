@@ -1,8 +1,9 @@
-import { Text, View, Image } from 'react-native';
+import { Text, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import styles from '../styles';
 import { decide, randomRecExpression } from '../ShouldYouWatch';
+import ReuseButton from '../component/ReuseButton';
 
 
 const SelectedScreen = () => {
@@ -10,6 +11,7 @@ const SelectedScreen = () => {
 	let unparsedData, DATA;
     const route = useRoute(); 
 	const [animeStats, setAnimeStats] = useState({});
+	const [link, setLink] = useState("");
 	const [user_recommendation, setRec] = useState("");
 
 	const getMetrics = async (path) => {
@@ -65,6 +67,7 @@ const SelectedScreen = () => {
 
 	useEffect(() => {
 		let path = 'https://api.jikan.moe/v4/anime/' + route.params.selectedAnime + '/statistics';
+		setLink('https://myanimelist.net/anime/' + route.params.selectedAnime);
 		getMetrics(path);
 	}, []);
 
@@ -77,7 +80,7 @@ const SelectedScreen = () => {
 	}, [animeStats]);
 
     return (
-        <View style={styles.container}>
+		<View style={styles.container}>
 			<Text style={styles.rec}>{user_recommendation}</Text>
 			<Text style={styles.score}>Score: {animeStats.score}</Text>
 			<Text >Completed: {animeStats.completed}</Text>
@@ -86,7 +89,8 @@ const SelectedScreen = () => {
 			<Text >On Hold: {animeStats.on_hold}</Text>
 			<Text >Total: {animeStats.total}</Text>
 			<Text style={styles.title}>{route.params.title}</Text>
-        </View>
+			<ReuseButton text="Check it out on MyAnimeList!" link={link}/>
+		</View>
     );
 };
 

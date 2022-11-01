@@ -12,7 +12,6 @@ const userAction = async () => {
 	console.log(myJson);
 };
   
-
 const AnimeScreen = () => {
 	//userAction();
     const route = useRoute();
@@ -40,7 +39,6 @@ const AnimeScreen = () => {
 							title: anime.title
 						};
 					});
-
 
 					setAnimeList(DATA);
 				})

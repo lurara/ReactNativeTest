@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../styles'
+import ReuseButton from '../component/ReuseButton';
 
 const HomeScreen = () => {
 const [animeTitle, setAnimeTitle] = useState('');  
@@ -32,8 +33,10 @@ return (
         onChangeText={(text) => setAnimeTitle(text)} /> 
         <Button title="Search" onPress={goAnimeScreen}/>
         <StatusBar style="auto" />
+        <ReuseButton text='Check out the Jikan API' link='https://docs.api.jikan.moe/'/>
     </View>
 );
 };
 
 export default HomeScreen;
+
