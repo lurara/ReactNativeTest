@@ -2,7 +2,7 @@ import { Button, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
-import styles from '../styles'
+import styles from '../style/styles'
 import ReuseButton from '../component/ReuseButton';
 
 const HomeScreen = () => {

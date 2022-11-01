@@ -1,8 +1,7 @@
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
-import { FlatList, TouchableOpacity } from 'react-native-web';
-import styles from '../styles'
+import styles from '../style/styles'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 

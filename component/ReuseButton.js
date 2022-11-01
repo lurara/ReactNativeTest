@@ -1,7 +1,6 @@
 import React from 'react';
 import * as Linking from 'expo-linking';
-import { StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-web';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 function ReuseButton(props) {
   const {text, link} = props;

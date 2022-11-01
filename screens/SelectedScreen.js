@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import styles from '../styles';
+import styles from '../style/styles'
 import { decide, randomRecExpression } from '../ShouldYouWatch';
 import ReuseButton from '../component/ReuseButton';
 
